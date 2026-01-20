@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 新加坡親子深度遊 (導航與百科版)</title>
+    <style>
+        :root {
+            --primary: #00897b;
+            --accent: #ff6f00;
+            --bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --text: #37474f;
+            --wiki-color: #e0e0e0;
+            --ta-color: #00af87;
+            --nav-color: #4285F4;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0; padding: 15px; padding-bottom: 80px;
+            line-height: 1.5;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        /* Header */
+        .header {
+            background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 15px;
+            text-align: center; border-bottom: 4px solid var(--primary);
+        }
+        .hotel-tag { 
+            display: inline-block; background: #e0f2f1; color: #004d40; 
+            padding: 4px 12px; border-radius: 15px; 
+            font-size: 0.85em; margin-top: 8px; font-weight: bold;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex; overflow-x: auto; gap: 8px; 
+            margin-bottom: 15px; scrollbar-width: none;
+        }
+        .tab-btn {
+            background: white; border: 1px solid #cfd8dc;
+            padding: 10px 16px; border-radius: 20px;
+            white-space: nowrap; color: #546e7a; font-weight: 600;
+            flex-shrink: 0;
+        }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .day-content { display: none; }
+        .day-content.active { display: block; animation: fadeIn 0.3s; }
+
+        /* Spot Card */
+        .timeline-item {
+            background: var(--card-bg); border-radius: 12px;
+            padding: 18px; margin-bottom: 0px; /* 貼合導航線 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+        .spot-title { font-size: 1.2em; font-weight: 700; color: #2c3e50; margin: 8px 0; }
+        .time-badge { background: #263238; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; }
+        
+        /* Wiki & TA Buttons */
+        .info-bar { display: flex; gap: 10px; margin-bottom: 12px; }
+        .info-btn {
+            flex: 1; text-decoration: none; font-size: 0.75em; padding: 6px;
+            border-radius: 6px; text-align: center; font-weight: bold;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
+        }
+        .btn-wiki { background: #f1f3f4; color: #333; border: 1px solid #dadce0; }
+        .btn-ta { background: #e8f5e9; color: #00796b; border: 1px solid #c8e6c9; }
+
+        /* Navigation Connector */
+        .nav-link-block {
+            margin: 0px 25px; padding: 15px 15px;
+            border-left: 3px dashed #cfd8dc;
+            position: relative;
+        }
+        .nav-link-block::before {
+            content: "⬇️"; position: absolute; left: -12px; top: 40%; background: var(--bg);
+        }
+        .btn-nav {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--nav-color); color: white; text-decoration: none;
+            padding: 8px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold;
+            box-shadow: 0 4px 6px rgba(66, 133, 244, 0.2);
+        }
+
+        .desc { font-size: 0.9em; color: #546e7a; margin-bottom: 10px; line-height: 1.6; }
+        .mrt-hint { font-size: 0.8em; color: #e65100; font-weight: 600; background: #fff3e0; padding: 5px 10px; border-radius: 4px; margin-top: 10px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1 style="margin:0; font-size:1.4em; color:var(--primary);">🇸🇬 新加坡親子 5 日遊</h1>
+        <div class="hotel-tag">🏨 Holiday Inn Orchard City Centre</div>
+    </div>
+
+    <div class="tabs" id="tabContainer"></div>
+    <div id="contentContainer"></div>
+</div>
+
+<script>
+    const HOTEL = "Holiday Inn Singapore Orchard City Centre";
+    const itinerary = [
+        {
+            date: "1/25 (日)",
+            spots: [
+                { t: "14:30", n: "樟宜機場", q: "Changi Airport", w: "新加坡樟宜机场", ta: "Changi_Airport", d: "抵達新加坡，辦理入境與行李領取。" },
+                { t: "16:00", n: "飯店 Check-in", q: HOTEL, w: "烏節路", ta: "Holiday_Inn_Singapore_Orchard_City_Centre", d: "飯店放下行李，稍作休息。" },
+                { t: "17:30", n: "Satay by the Bay", q: "Satay by the Bay", w: "濱海灣花園", ta: "Satay_by_the_Bay", d: "花園內的露天熟食中心，推薦沙爹串與烤雞翅。" },
+                { t: "19:45", n: "濱海灣花園擎天樹", q: "Supertree Grove", w: "滨海湾花园", ta: "Supertree_Grove", d: "燈光秀 (19:45) 與 週日限定的 Borealis 極光秀 (20:00)。" }
+            ]
+        },
+        {
+            date: "1/26 (一)",
+            spots: [
+                { t: "10:00", n: "牛車水佛牙寺", q: "Buddha Tooth Relic Temple", w: "新加坡佛牙寺龙华院", ta: "Buddha_Tooth_Relic_Temple_and_Museum", d: "壯麗的建築，內有超強冷氣，適合親子散步。" },
+                { t: "11:30", n: "麥士威熟食中心", q: "Maxwell Food Centre", w: "麦士威路熟食中心", ta: "Maxwell_Food_Centre", d: "必吃天天海南雞飯。建議 11:30 前抵達避開人潮。" },
+                { t: "13:30", n: "URA 城市展覽館", q: "Singapore City Gallery", w: "市區重建局_(新加坡)", ta: "Singapore_City_Gallery", d: "免費景點，有巨大的新加坡模型，小孩也會看得很開心。" },
+                { t: "15:30", n: "雲霧林 Cloud Forest", q: "Cloud Forest", w: "滨海湾花园", ta: "Cloud_Forest", d: "看室內大瀑布，體驗阿凡達般的奇幻景觀。" }
+            ]
+        },
+        {
+            date: "1/27 (二)",
+            spots: [
+                { t: "10:00", n: "環球影城 (USS)", q: "Universal Studios Singapore", w: "新加坡环球影城", ta: "Universal_Studios_Singapore", d: "全日遊玩。建議先排天幕飛行，再玩變形金剛。" },
+                { t: "18:00", n: "怡豐城 VivoCity", q: "VivoCity", w: "怡丰城", ta: "VivoCity", d: "新加坡最大商場，晚餐選擇極多，也有超市可補貨。" }
+            ]
+        },
+        {
+            date: "1/28 (三)",
+            spots: [
+                { t: "10:00", n: "聖淘沙斜坡滑車", q: "Skyline Luge Singapore", w: "聖淘沙", ta: "Skyline_Luge_Sentosa", d: "親子必玩。先搭吊椅上山，再滑車下山，非常刺激。" },
+                { t: "13:30", n: "飯店午睡回血", q: HOTEL, w: "烏節路", ta: "Holiday_Inn_Singapore_Orchard_City_Centre", d: "重要：回飯店睡覺避開午後雷陣雨，體力回充。" },
+                { t: "19:15", n: "夜間動物園", q: "Night Safari", w: "夜间野生动物园", ta: "Night_Safari", d: "搭乘遊園車觀察動物晚間活動，記得先預約入園時段。" }
+            ]
+        },
+        {
+            date: "1/29 (四)",
+            spots: [
+                { t: "11:00", n: "星耀樟宜 Jewel", q: "Jewel Changi Airport", w: "星耀樟宜", ta: "Jewel_Changi_Airport", d: "世界最高室內瀑布。最後採買與松發肉骨茶。" },
+                { t: "13:30", n: "機場 Check-in", q: "Changi Airport", w: "新加坡樟宜机场", ta: "Changi_Airport", d: "準備返家。長榮航空 BR0216 (15:45)。" }
+            ]
+        }
+    ];
+
+    function init() {
+        const tabContainer = document.getElementById('tabContainer');
+        const contentContainer = document.getElementById('contentContainer');
+
+        itinerary.forEach((day, index) => {
+            // Tab Button
+            const btn = document.createElement('button');
+            btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+            btn.innerText = `Day ${index + 1} (${day.date.split(' ')[0]})`;
+            btn.onclick = () => switchTab(index);
+            tabContainer.appendChild(btn);
+
+            // Day Content Div
+            const dayDiv = document.createElement('div');
+            dayDiv.className = `day-content ${index === 0 ? 'active' : ''}`;
+            dayDiv.id = `day-${index}`;
+
+            day.spots.forEach((spot, i) => {
+                // Spot Card HTML
+                const spotCard = `
+                    <div class="timeline-item">
+                        <span class="time-badge">${spot.t}</span>
+                        <div class="spot-title">${spot.n}</div>
+                        <div class="info-bar">
+                            <a href="https://zh.wikipedia.org/wiki/${encodeURIComponent(spot.w)}" target="_blank" class="info-btn btn-wiki">📖 維基百科</a>
+                            <a href="https://www.tripadvisor.com.tw/Search?q=${encodeURIComponent(spot.n)}" target="_blank" class="info-btn btn-ta">🦉 評價/評論</a>
+                        </div>
+                        <div class="desc">${spot.d}</div>
+                    </div>
+                `;
+                dayDiv.innerHTML += spotCard;
+
+                // Navigation Link (Between Spots)
+                if (i < day.spots.length - 1) {
+                    const nextSpot = day.spots[i + 1];
+                    const navLink = `
+                        <div class="nav-link-block">
+                            <div style="font-size:0.75em; color:#999; margin-bottom:5px;">下一站：${nextSpot.n}</div>
+                            <a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(spot.q)}&destination=${encodeURIComponent(nextSpot.q)}&travelmode=transit" 
+                               target="_blank" class="btn-nav">
+                               🗺️ 區間路線規劃 (捷運/公車)
+                            </a>
+                        </div>
+                    `;
+                    dayDiv.innerHTML += navLink;
+                }
+            });
+
+            contentContainer.appendChild(dayDiv);
+        });
+    }
+
+    function switchTab(idx) {
+        document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+        document.querySelectorAll('.day-content').forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    init();
+</script>
+
+</body>
+</html>
