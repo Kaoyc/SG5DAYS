@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 🇸🇬 新加坡親子深度遊 (最終修正版)</title>
+    <title>2026 🇸🇬 新加坡親子深度遊 (精準時間版)</title>
     <style>
         :root {
             --primary: #00796b; --accent: #ff6f00; --bg: #f5f7f9; --text: #37474f; --google-blue: #4285F4;
@@ -50,58 +50,57 @@
 </div>
 
 <script>
-    const HOTEL_NAME = "Holiday Inn Singapore Orchard City Centre";
     const HOTEL_ADDR = "11 Cavenagh Rd, Singapore 229616";
 
     const itinerary = [
         {
             date: "1/25 (日)",
             spots: [
-                { t: "14:30", n: "樟宜機場", q: "Changi Airport Singapore", d: "抵達、領行李、換匯。", tr: "🚇 <span class='mrt ew'>EW</span> 機場 ➜ Tanah Merah 轉綠線 ➜ City Hall 轉紅線 ➜ Somerset。" },
-                { t: "16:00", n: "飯店 Check-in", q: HOTEL_ADDR, d: "放行李、更換涼爽衣物。", tr: "🚇 從 Somerset <span class='mrt ns'>NS</span> ➜ Marina Bay 轉棕線 <span class='mrt te'>TE</span> ➜ Gardens by the Bay。" },
-                { t: "17:30", n: "Satay by the Bay", q: "Satay by the Bay", d: "露天沙爹餐。必吃：沙爹、烤雞翅。", tr: "🚶 步行經蜻蜓橋 (Dragonfly Bridge) 穿過金沙酒店。" },
-                { t: "19:45", n: "超級樹燈光秀", q: "Supertree Grove", d: "19:45 燈光秀 / 20:00 極光秀 (週日限定)。", tr: "🚶 步行前往金沙戶外 Event Plaza。" },
-                { t: "21:00", n: "金沙水舞秀 Spectra", q: "Spectra - A Light & Water Show", d: "21:00 水舞秀。結束後準備回飯店。", tr: "🚇 從 Bayfront <span class='mrt dt'>DT</span> ➜ 經 Newton 轉紅線 <span class='mrt ns'>NS</span> ➜ Somerset。" },
+                { t: "14:30", n: "樟宜機場", q: "Changi Airport Singapore", d: "抵達、領行李、換匯。", tr: "🚇 <span class='mrt ew'>EW</span> 機場 ➜ Tanah Merah ➜ City Hall ➜ Somerset。" },
+                { t: "16:00", n: "飯店 Check-in", q: HOTEL_ADDR, d: "放行李、更換涼爽衣物。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Marina Bay ➜ Gardens by the Bay。" },
+                { t: "17:30", n: "Satay by the Bay", q: "Satay by the Bay", d: "露天沙爹餐。", tr: "🚶 步行經蜻蜓橋穿過金沙酒店。" },
+                { t: "19:45", n: "超級樹燈光秀", q: "Supertree Grove", d: "19:45 燈光秀 / 20:00 極光秀。", tr: "🚶 步行前往金沙戶外 Event Plaza。" },
+                { t: "21:00", n: "金沙水舞秀 Spectra", q: "Spectra - A Light & Water Show", d: "21:00 水舞秀。", tr: "🚇 從 Bayfront <span class='mrt dt'>DT</span> ➜ 回 Somerset。" },
                 { t: "22:00", n: "回飯店", q: HOTEL_ADDR, d: "休息。", tr: "" }
             ]
         },
         {
             date: "1/26 (一)",
             spots: [
-                { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "出發前往港灣站。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Dhoby Ghaut 轉紫線 <span class='mrt ne'>NE</span> ➜ HarbourFront。" },
-                { t: "10:00", n: "花柏山纜車", q: "Mount Faber Cable Car Station", d: "B出口前往 Tower 2 搭纜車。", tr: "🚠 搭乘纜車入島，斜坡滑車就在下車處附近。" },
-                { t: "10:30", n: "聖淘沙斜坡滑車", q: "Skyline Luge Singapore", d: "坐吊椅上山，滑車下山。", tr: "🚝 搭聖淘沙輕軌 (Sentosa Express) 回 VivoCity。" },
-                { t: "12:30", n: "怡豐城 VivoCity", q: "VivoCity Singapore", d: "午餐時間。新加坡最大商場。", tr: "🚇 HarbourFront <span class='mrt ne'>NE</span> ➜ Outram Park 轉棕線 <span class='mrt te'>TE</span> ➜ Gardens by the Bay。" },
-                { t: "14:30", n: "雲霧林 Cloud Forest", q: "Cloud Forest", d: "避暑行程。看瀑布與室內植栽。", tr: "🚇 Gardens by the Bay <span class='mrt te'>TE</span> ➜ Orchard (TE14) 走路回飯店。" },
-                { t: "18:30", n: "回飯店/烏節路晚餐", q: HOTEL_ADDR, d: "休息睡覺。", tr: "" }
+                { t: "08:50", n: "從飯店出發 (準時)", q: HOTEL_ADDR, d: "今日斜坡滑車預約 10:00，必須準時出發。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Dhoby Ghaut ➜ HarbourFront。" },
+                { t: "09:30", n: "花柏山纜車", q: "Mount Faber Cable Car Station", d: "B出口前往 Tower 2 搭纜車入島。", tr: "🚠 搭乘纜車約 15 分鐘，下纜車後步行 5 分鐘即達滑車起點。" },
+                { t: "10:00", n: "斜坡滑車 (預約時段)", q: "Skyline Luge Singapore", d: "<b>10:00 準時進場。</b>坐吊椅上山，滑車下山。", tr: "🚝 搭聖淘沙輕軌回 VivoCity。" },
+                { t: "12:30", n: "怡豐城 VivoCity", q: "VivoCity Singapore", d: "午餐時間。", tr: "🚇 HarbourFront <span class='mrt ne'>NE</span> ➜ Outram Park ➜ Gardens by the Bay。" },
+                { t: "14:30", n: "雲霧林 Cloud Forest", q: "Cloud Forest", d: "避暑行程。", tr: "🚇 Gardens by the Bay <span class='mrt te'>TE</span> ➜ Orchard (TE14) 走路回飯店。" },
+                { t: "18:30", n: "回飯店休息", q: HOTEL_ADDR, d: "今日早起，下午回飯店回血。", tr: "" }
             ]
         },
         {
             date: "1/27 (二)",
             spots: [
                 { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "全日環球影城行程。", tr: "🚇 經 HarbourFront 轉聖淘沙輕軌 ➜ Resorts World Station。" },
-                { t: "10:00", n: "環球影城 (USS)", q: "Universal Studios Singapore", d: "建議先衝天幕飛行 (Canopy Flyer)。", tr: "🚝 搭輕軌回 VivoCity。" },
+                { t: "10:00", n: "環球影城 (USS)", q: "Universal Studios Singapore", d: "先衝天幕飛行。", tr: "🚝 搭輕軌回 VivoCity。" },
                 { t: "18:00", n: "VivoCity 晚餐", q: "VivoCity Singapore", d: "晚餐後回飯店。", tr: "🚇 HarbourFront <span class='mrt ne'>NE</span> ➜ Somerset。" },
-                { t: "20:00", n: "回飯店", q: HOTEL_ADDR, d: "今日體力消耗大，早點休息。", tr: "" }
+                { t: "20:00", n: "回飯店", q: HOTEL_ADDR, d: "早點休息。", tr: "" }
             ]
         },
         {
             date: "1/28 (三)",
             spots: [
-                { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "前往牛車水。", tr: "🚇 Somerset ➜ Dhoby Ghaut 轉紫線 <span class='mrt ne'>NE</span> ➜ Chinatown。" },
-                { t: "10:00", n: "牛車水佛牙寺", q: "Buddha Tooth Relic Temple", d: "參觀佛牙寺、馬里安曼興都廟。", tr: "🚶 步行 5 分鐘至對面 URA。" },
-                { t: "11:00", n: "URA 城市展覽館", q: "Singapore City Gallery", d: "免費看大模型。冷氣強。", tr: "🚶 步行至 Maxwell 吃午餐。" },
+                { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "前往牛車水。", tr: "🚇 Somerset ➜ Chinatown。" },
+                { t: "10:00", n: "牛車水佛牙寺", q: "Buddha Tooth Relic Temple", d: "參觀佛牙寺。", tr: "🚶 步行 5 分鐘至對面 URA。" },
+                { t: "11:00", n: "URA 城市展覽館", q: "Singapore City Gallery", d: "看巨大模型。", tr: "🚶 步行至 Maxwell 吃午餐。" },
                 { t: "12:00", n: "麥士威熟食中心", q: "Maxwell Food Centre", d: "天天海南雞飯。", tr: "🚇 Maxwell <span class='mrt te'>TE</span> ➜ Orchard (TE14) 走路回飯店。" },
-                { t: "13:30", n: "飯店休息回血", q: HOTEL_ADDR, d: "午睡躲太陽。動物園很遠，務必睡覺。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Khatib ➜ 轉 Mandai Shuttle。" },
-                { t: "19:15", n: "夜間動物園", q: "Night Safari Singapore", d: "搭遊園車 (Tram)。", tr: "🚕 回程極度建議直接搭計程車(免安全座椅)或叫 Grab 回飯店。" },
+                { t: "13:30", n: "飯店休息午睡", q: HOTEL_ADDR, d: "重要：儲備晚上動物園體力。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Khatib ➜ 轉接駁車。" },
+                { t: "19:15", n: "夜間動物園", q: "Night Safari Singapore", d: "搭遊園車。", tr: "🚕 回程建議直接搭計程車回飯店。" },
                 { t: "22:00", n: "回飯店", q: HOTEL_ADDR, d: "結束最後一個晚上的行程。", tr: "" }
             ]
         },
         {
             date: "1/29 (四)",
             spots: [
-                { t: "10:30", n: "從飯店出發", q: HOTEL_ADDR, d: "辦理退房，前往機場。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ City Hall 轉綠線 <span class='mrt ew'>EW</span> ➜ 機場。" },
-                { t: "11:30", n: "星耀樟宜 Jewel", q: "Jewel Changi Airport", d: "看瀑布、吃松發、最後採買。", tr: "🚶 步行前往 T3 辦理登機。" },
+                { t: "10:30", n: "從飯店出發", q: HOTEL_ADDR, d: "辦理退房，前往機場。", tr: "🚇 Somerset ➜ City Hall ➜ 機場。" },
+                { t: "11:30", n: "星耀樟宜 Jewel", q: "Jewel Changi Airport", d: "最後採買。", tr: "🚶 步行前往 T3 辦理登機。" },
                 { t: "13:30", n: "樟宜機場 T3", q: "Changi Airport Singapore Terminal 3", d: "長榮 BR0216 (15:45)。", tr: "" }
             ]
         }
