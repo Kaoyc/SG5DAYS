@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 🇸🇬 新加坡親子遊 (導航修正版)</title>
+    <title>2026 🇸🇬 新加坡親子深度遊 (最終修正版)</title>
     <style>
         :root {
             --primary: #00796b; --accent: #ff6f00; --bg: #f5f7f9; --text: #37474f; --google-blue: #4285F4;
-            --mrt-ns: #d32f2f; --mrt-ew: #388e3c; --mrt-ne: #7b1fa2; --mrt-te: #795548;
+            --mrt-ns: #d32f2f; --mrt-ew: #388e3c; --mrt-ne: #7b1fa2; --mrt-te: #795548; --mrt-dt: #1976d2;
         }
-        body { font-family: -apple-system, "PingFang TC", sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px 15px 60px; }
+        body { font-family: -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px 15px 60px; }
         .container { max-width: 600px; margin: 0 auto; }
-        .header { background: linear-gradient(135deg, #004d40, #00796b); color: white; padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 15px; }
-        .hotel-box { background: rgba(255,255,255,0.15); margin-top: 10px; padding: 10px; border-radius: 12px; font-size: 0.85em; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; }
+        .header { background: linear-gradient(135deg, #004d40, #00796b); color: white; padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .hotel-box { background: rgba(255,255,255,0.15); margin-top: 10px; padding: 10px; border-radius: 12px; font-size: 0.85em; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; line-height: 1.4; }
         .mrt { display: inline-block; padding: 1px 5px; border-radius: 3px; color: white; font-weight: bold; font-size: 0.75em; margin: 0 2px; }
-        .ns { background: var(--mrt-ns); } .ew { background: var(--mrt-ew); } .ne { background: var(--mrt-ne); } .te { background: var(--mrt-te); }
+        .ns { background: var(--mrt-ns); } .ew { background: var(--mrt-ew); } .ne { background: var(--mrt-ne); } .te { background: var(--mrt-te); } .dt { background: var(--mrt-dt); }
         .tabs { display: flex; overflow-x: auto; gap: 8px; margin-bottom: 15px; scrollbar-width: none; }
         .tab-btn { background: white; border: none; padding: 10px 18px; border-radius: 20px; white-space: nowrap; font-weight: bold; color: #666; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .tab-btn.active { background: var(--accent); color: white; }
         .spot-card { background: white; border-radius: 18px; padding: 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
         .time-badge { background: #333; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.8em; }
-        .spot-name { font-size: 1.2em; font-weight: 800; margin: 10px 0 10px 0; color: #1a1a1a; }
+        .spot-name { font-size: 1.2em; font-weight: 800; margin: 10px 0; color: #1a1a1a; display: block;}
         .btn-group { display: flex; gap: 8px; margin-bottom: 12px; }
-        .action-btn { flex: 1; text-decoration: none; font-size: 0.75em; padding: 8px; border-radius: 10px; text-align: center; font-weight: 600; border: 1px solid #ddd; }
+        .action-btn { flex: 1; text-decoration: none; font-size: 0.75em; padding: 8px; border-radius: 10px; text-align: center; font-weight: 600; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; gap: 4px; }
         .btn-search { background: #f8f9fa; color: #333; }
         .btn-loc { background: #e8f0fe; color: var(--google-blue); border-color: #d2e3fc; }
         .nav-block { margin: 0 20px; padding: 15px 15px; border-left: 3px dashed #cfd8dc; position: relative; }
         .nav-block::before { content: "↓"; position: absolute; left: -11px; top: 15px; background: var(--bg); color: #999; font-weight: bold; }
-        .transit-info { font-size: 0.82em; color: #00796b; margin-bottom: 8px; line-height: 1.4; }
+        .transit-info { font-size: 0.82em; color: #00796b; margin-bottom: 8px; line-height: 1.4; background: #e0f2f1; padding: 8px; border-radius: 6px; }
         .btn-nav { display: inline-flex; align-items: center; gap: 6px; background: var(--google-blue); color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 0.82em; font-weight: bold; }
-        .desc { font-size: 0.88em; line-height: 1.5; color: #546e7a; }
+        .desc { font-size: 0.88em; line-height: 1.5; color: #546e7a; margin-top: 5px; }
         .day-content { display: none; }
         .day-content.active { display: block; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -39,9 +39,9 @@
 
 <div class="container">
     <div class="header">
-        <h1 style="margin:0; font-size: 1.3em;">🇸🇬 新加坡親子 5 日遊</h1>
+        <h1 style="margin:0; font-size: 1.3em;">🇸🇬 2026 新加坡親子深度遊</h1>
         <div class="hotel-box" onclick="copyHotel()">
-            🏨 Holiday Inn Orchard City Centre<br>
+            📍 飯店起訖點：Holiday Inn Orchard City Centre<br>
             <small>11 Cavenagh Rd, Singapore 229616</small>
         </div>
     </div>
@@ -57,44 +57,52 @@
         {
             date: "1/25 (日)",
             spots: [
-                { t: "14:30", n: "樟宜機場", q: "Changi Airport Singapore", d: "抵達後領行李、領網卡。", tr: "🚇 機場 <span class='mrt ew'>EW</span> ➜ Tanah Merah 轉綠線 ➜ City Hall 轉紅線 ➜ Somerset。" },
-                { t: "16:00", n: "飯店 Check-in", q: HOTEL_ADDR, d: "放行李、換裝。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Marina Bay 轉 <span class='mrt te'>TE</span> ➜ Gardens by the Bay。" },
-                { t: "17:30", n: "Satay by the Bay", q: "Satay by the Bay", d: "沙爹晚餐。位於花園後方靠近水邊。", tr: "🚶 步行經蜻蜓橋 (Dragonfly Bridge) 穿過金沙酒店。" },
-                { t: "19:45", n: "超級樹燈光秀", q: "Supertree Grove", d: "19:45 燈光秀 / 20:00 極光秀。" },
-                { t: "21:00", n: "金沙水舞秀 Spectra", q: "Spectra - A Light & Water Show", d: "金沙戶外廣場。", tr: "🚇 Bayfront 站搭車回 Somerset。" }
+                { t: "14:30", n: "樟宜機場", q: "Changi Airport Singapore", d: "抵達、領行李、換匯。", tr: "🚇 <span class='mrt ew'>EW</span> 機場 ➜ Tanah Merah 轉綠線 ➜ City Hall 轉紅線 ➜ Somerset。" },
+                { t: "16:00", n: "飯店 Check-in", q: HOTEL_ADDR, d: "放行李、更換涼爽衣物。", tr: "🚇 從 Somerset <span class='mrt ns'>NS</span> ➜ Marina Bay 轉棕線 <span class='mrt te'>TE</span> ➜ Gardens by the Bay。" },
+                { t: "17:30", n: "Satay by the Bay", q: "Satay by the Bay", d: "露天沙爹餐。必吃：沙爹、烤雞翅。", tr: "🚶 步行經蜻蜓橋 (Dragonfly Bridge) 穿過金沙酒店。" },
+                { t: "19:45", n: "超級樹燈光秀", q: "Supertree Grove", d: "19:45 燈光秀 / 20:00 極光秀 (週日限定)。", tr: "🚶 步行前往金沙戶外 Event Plaza。" },
+                { t: "21:00", n: "金沙水舞秀 Spectra", q: "Spectra - A Light & Water Show", d: "21:00 水舞秀。結束後準備回飯店。", tr: "🚇 從 Bayfront <span class='mrt dt'>DT</span> ➜ 經 Newton 轉紅線 <span class='mrt ns'>NS</span> ➜ Somerset。" },
+                { t: "22:00", n: "回飯店", q: HOTEL_ADDR, d: "休息。", tr: "" }
             ]
         },
         {
             date: "1/26 (一)",
             spots: [
-                { t: "09:30", n: "花柏山纜車", q: "Mount Faber Cable Car Station", d: "B出口前往 Tower 2。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Dhoby Ghaut 轉 <span class='mrt ne'>NE</span> ➜ HarbourFront。" },
-                { t: "10:30", n: "聖淘沙斜坡滑車", q: "Skyline Luge Singapore", d: "纜車下車即達。", tr: "🚝 搭聖淘沙輕軌回 VivoCity。" },
-                { t: "12:30", n: "怡豐城 VivoCity", q: "VivoCity Singapore", d: "商場吃午餐。", tr: "🚇 HarbourFront <span class='mrt ne'>NE</span> ➜ Outram Park 轉 <span class='mrt te'>TE</span> ➜ Gardens by the Bay。" },
-                { t: "14:30", n: "雲霧林 Cloud Forest", q: "Cloud Forest", d: "看瀑布避暑。", tr: "🚇 Gardens by the Bay <span class='mrt te'>TE</span> ➜ Orchard (TE14)。" }
+                { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "出發前往港灣站。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Dhoby Ghaut 轉紫線 <span class='mrt ne'>NE</span> ➜ HarbourFront。" },
+                { t: "10:00", n: "花柏山纜車", q: "Mount Faber Cable Car Station", d: "B出口前往 Tower 2 搭纜車。", tr: "🚠 搭乘纜車入島，斜坡滑車就在下車處附近。" },
+                { t: "10:30", n: "聖淘沙斜坡滑車", q: "Skyline Luge Singapore", d: "坐吊椅上山，滑車下山。", tr: "🚝 搭聖淘沙輕軌 (Sentosa Express) 回 VivoCity。" },
+                { t: "12:30", n: "怡豐城 VivoCity", q: "VivoCity Singapore", d: "午餐時間。新加坡最大商場。", tr: "🚇 HarbourFront <span class='mrt ne'>NE</span> ➜ Outram Park 轉棕線 <span class='mrt te'>TE</span> ➜ Gardens by the Bay。" },
+                { t: "14:30", n: "雲霧林 Cloud Forest", q: "Cloud Forest", d: "避暑行程。看瀑布與室內植栽。", tr: "🚇 Gardens by the Bay <span class='mrt te'>TE</span> ➜ Orchard (TE14) 走路回飯店。" },
+                { t: "18:30", n: "回飯店/烏節路晚餐", q: HOTEL_ADDR, d: "休息睡覺。", tr: "" }
             ]
         },
         {
             date: "1/27 (二)",
             spots: [
-                { t: "10:00", n: "環球影城 (USS)", q: "Universal Studios Singapore", d: "全日遊玩。", tr: "🚇 經 HarbourFront 轉輕軌入島。" },
-                { t: "18:00", n: "VivoCity 晚餐", q: "VivoCity Singapore", d: "晚餐後回飯店休息。", tr: "🚇 返回 Somerset。" }
+                { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "全日環球影城行程。", tr: "🚇 經 HarbourFront 轉聖淘沙輕軌 ➜ Resorts World Station。" },
+                { t: "10:00", n: "環球影城 (USS)", q: "Universal Studios Singapore", d: "建議先衝天幕飛行 (Canopy Flyer)。", tr: "🚝 搭輕軌回 VivoCity。" },
+                { t: "18:00", n: "VivoCity 晚餐", q: "VivoCity Singapore", d: "晚餐後回飯店。", tr: "🚇 HarbourFront <span class='mrt ne'>NE</span> ➜ Somerset。" },
+                { t: "20:00", n: "回飯店", q: HOTEL_ADDR, d: "今日體力消耗大，早點休息。", tr: "" }
             ]
         },
         {
             date: "1/28 (三)",
             spots: [
-                { t: "09:30", n: "牛車水佛牙寺", q: "Buddha Tooth Relic Temple", d: "參觀。附近有年貨大街。", tr: "🚇 Somerset ➜ Chinatown。" },
-                { t: "11:00", n: "URA 展覽館", q: "Singapore City Gallery", d: "看大模型。", tr: "🚶 步行至對面 Maxwell。" },
-                { t: "12:00", n: "麥士威熟食中心", q: "Maxwell Food Centre", d: "天天海南雞飯。", tr: "🚇 Maxwell <span class='mrt te'>TE</span> ➜ Orchard (TE14) 回飯店午睡。" },
-                { t: "13:30", n: "飯店休息回血", q: HOTEL_ADDR, d: "午睡。儲備動物園體力。", tr: "🚇 Somerset ➜ Khatib ➜ 轉 Mandai Shuttle。" },
-                { t: "19:15", n: "夜間動物園", q: "Night Safari Singapore", d: "搭遊園車。", tr: "🚕 回程建議直接叫 Grab 或搭計程車。" }
+                { t: "09:30", n: "從飯店出發", q: HOTEL_ADDR, d: "前往牛車水。", tr: "🚇 Somerset ➜ Dhoby Ghaut 轉紫線 <span class='mrt ne'>NE</span> ➜ Chinatown。" },
+                { t: "10:00", n: "牛車水佛牙寺", q: "Buddha Tooth Relic Temple", d: "參觀佛牙寺、馬里安曼興都廟。", tr: "🚶 步行 5 分鐘至對面 URA。" },
+                { t: "11:00", n: "URA 城市展覽館", q: "Singapore City Gallery", d: "免費看大模型。冷氣強。", tr: "🚶 步行至 Maxwell 吃午餐。" },
+                { t: "12:00", n: "麥士威熟食中心", q: "Maxwell Food Centre", d: "天天海南雞飯。", tr: "🚇 Maxwell <span class='mrt te'>TE</span> ➜ Orchard (TE14) 走路回飯店。" },
+                { t: "13:30", n: "飯店休息回血", q: HOTEL_ADDR, d: "午睡躲太陽。動物園很遠，務必睡覺。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ Khatib ➜ 轉 Mandai Shuttle。" },
+                { t: "19:15", n: "夜間動物園", q: "Night Safari Singapore", d: "搭遊園車 (Tram)。", tr: "🚕 回程極度建議直接搭計程車(免安全座椅)或叫 Grab 回飯店。" },
+                { t: "22:00", n: "回飯店", q: HOTEL_ADDR, d: "結束最後一個晚上的行程。", tr: "" }
             ]
         },
         {
             date: "1/29 (四)",
             spots: [
-                { t: "11:00", n: "星耀樟宜 Jewel", q: "Jewel Changi Airport", d: "最後採買。", tr: "🚇 Somerset ➜ City Hall 轉綠線 ➜ 機場。" },
-                { t: "13:30", n: "機場 Check-in", q: "Changi Airport Singapore", d: "返家。" }
+                { t: "10:30", n: "從飯店出發", q: HOTEL_ADDR, d: "辦理退房，前往機場。", tr: "🚇 Somerset <span class='mrt ns'>NS</span> ➜ City Hall 轉綠線 <span class='mrt ew'>EW</span> ➜ 機場。" },
+                { t: "11:30", n: "星耀樟宜 Jewel", q: "Jewel Changi Airport", d: "看瀑布、吃松發、最後採買。", tr: "🚶 步行前往 T3 辦理登機。" },
+                { t: "13:30", n: "樟宜機場 T3", q: "Changi Airport Singapore Terminal 3", d: "長榮 BR0216 (15:45)。", tr: "" }
             ]
         }
     ];
@@ -120,8 +128,8 @@
                         <span class="time-badge">${spot.t}</span>
                         <div class="spot-name">${spot.n}</div>
                         <div class="btn-group">
-                            <a href="https://www.google.com/search?q=${encodeURIComponent(spot.q)}" target="_blank" class="action-btn btn-search">🔍 搜尋</a>
-                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.q)}" target="_blank" class="action-btn btn-loc">📍 定位</a>
+                            <a href="https://www.google.com/search?q=${encodeURIComponent(spot.q + ' Singapore')}" target="_blank" class="action-btn btn-search">🔍 搜尋</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.q)}" target="_blank" class="action-btn btn-loc">📍 地圖</a>
                         </div>
                         <div class="desc">${spot.d}</div>
                     </div>
@@ -130,13 +138,13 @@
 
                 if (i < day.spots.length - 1) {
                     const nextSpot = day.spots[i+1];
-                    // 修正導航：如果是短距離則不強制 transit 模式
-                    const mode = (spot.tr && spot.tr.includes('🚶')) ? '' : '&travelmode=transit';
+                    const isWalking = (spot.tr && spot.tr.includes('🚶'));
+                    const mode = isWalking ? '' : '&travelmode=transit';
                     const nav = `
                         <div class="nav-block">
                             <div class="transit-info">${spot.tr || "🚶 步行前往下一站"}</div>
                             <a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(spot.q)}&destination=${encodeURIComponent(nextSpot.q)}${mode}" 
-                               target="_blank" class="btn-nav">🗺️ 導航到下一站</a>
+                               target="_blank" class="btn-nav">🗺️ 導航 A ➜ B</a>
                         </div>
                     `;
                     dayDiv.innerHTML += nav;
